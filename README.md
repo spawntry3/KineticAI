@@ -1,58 +1,40 @@
-# Welcome to your Lovable project
+Единственное требование — установленный Node.js и npm  
+Рекомендуемый способ установки — через nvm:  
+`https://github.com/nvm-sh/nvm#installing-and-updating`
 
-## Project info
-
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
-
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+Шаги для локального запуска:
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
+# Шаг 1. Клонируйте репозиторий по Git‑URL проекта
 git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
+# Шаг 2. Перейдите в папку проекта
 cd <YOUR_PROJECT_NAME>
 
-# Step 3: Install the necessary dependencies.
+# Шаг 3. Установите зависимости
 npm i
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Шаг 4. Запустите dev‑сервер с авто‑перезагрузкой и превью
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+**Редактирование файлов прямо в GitHub**
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- Откройте нужный файл в репозитории.
+- Нажмите кнопку «Edit» (значок карандаша) в правом верхнем углу.
+- Внесите изменения и закоммитьте их.
 
-**Use GitHub Codespaces**
+**Использование GitHub Codespaces**
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+- Откройте главную страницу репозитория.
+- Нажмите кнопку «Code» (зелёная кнопка справа).
+- Перейдите во вкладку «Codespaces».
+- Нажмите «New codespace», чтобы создать новое окружение.
+- Редактируйте файлы в Codespaces, затем закоммитьте и запушьте изменения.
 
-## What technologies are used for this project?
+## Технологии, используемые в проекте
 
-This project is built with:
+Проект построен на:
 
 - Vite
 - TypeScript
@@ -60,20 +42,20 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 - Supabase (PostgreSQL)
-- MongoDB (via local API)
+- MongoDB (через локальный API)
 
-## Databases (PostgreSQL + MongoDB)
+## Базы данных (PostgreSQL + MongoDB)
 
-- **PostgreSQL**: provided by Supabase (tables like `generations`)
-- **MongoDB**: used for non-relational metadata (tags/notes/extra data) via a small local API in `server/`
+- **PostgreSQL**: предоставляется Supabase (например, таблицы `generations`).
+- **MongoDB**: используется для нереляционных метаданных (теги, заметки, доп. данные) через небольшой локальный API в папке `server/`.
 
-### Run MongoDB locally
+### Запуск MongoDB локально
 
 ```sh
 npm run dev:mongo
 ```
 
-### Run the Mongo API
+### Запуск локального Mongo API
 
 ```sh
 cd server
@@ -81,17 +63,9 @@ npm install
 npm run dev
 ```
 
-By default it listens on `http://localhost:5050` and allows the frontend origin `http://localhost:8080`.
-You can configure it via `server/.env` (see `server/.env.example`).
+По умолчанию сервер слушает `http://localhost:5050` и разрешает фронтенд‑origin `http://localhost:8080`.  
+Настройки можно изменить через `server/.env` (см. пример `server/.env.example`).
 
-## How can I deploy this project?
+## Как развернуть (деплоить) этот проект
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Собранный фронтенд (`dist`‑папка) можно выложить на любой статический хостинг (например, Vercel, Netlify, GitHub Pages или собственный сервер) и настроить переменные окружения для бэкенда / Supabase в соответствии с вашей инфраструктурой.

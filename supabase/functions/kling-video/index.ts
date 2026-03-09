@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
 const corsHeaders = {
@@ -7,33 +8,6 @@ const corsHeaders = {
 };
 
 const KLING_BASE = "https://api-singapore.klingai.com";
-
-function generateJWT(ak: string, sk: string): string {
-  const header = { alg: "HS256", typ: "JWT" };
-  const now = Math.floor(Date.now() / 1000);
-  const payload = { iss: ak, exp: now + 1800, nbf: now - 5 };
-
-  const b64url = (data: Uint8Array) =>
-    btoa(String.fromCharCode(...data))
-      .replace(/\+/g, "-")
-      .replace(/\//g, "_")
-      .replace(/=+$/, "");
-
-  const enc = new TextEncoder();
-  const headerB64 = b64url(enc.encode(JSON.stringify(header)));
-  const payloadB64 = b64url(enc.encode(JSON.stringify(payload)));
-  const signingInput = `${headerB64}.${payloadB64}`;
-
-
-  const key = enc.encode(sk);
-  const msg = enc.encode(signingInput);
-
-
-  return crypto.subtle
-    .importKey("raw", key, { name: "HMAC", hash: "SHA-256" }, false, ["sign"])
-    .then((cryptoKey) => crypto.subtle.sign("HMAC", cryptoKey, msg))
-    .then((sig) => `${signingInput}.${b64url(new Uint8Array(sig))}`);
-}
 
 async function generateJWTAsync(ak: string, sk: string): Promise<string> {
   const header = { alg: "HS256", typ: "JWT" };

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
 const corsHeaders = {
@@ -19,7 +20,6 @@ serve(async (req) => {
     }
 
     if (mode === "image") {
-      // Use Gemini image generation
       const response = await fetch(
         "https://ai.gateway.lovable.dev/v1/chat/completions",
         {
@@ -62,7 +62,7 @@ serve(async (req) => {
       const data = await response.json();
       console.log("AI response structure:", JSON.stringify(data).substring(0, 500));
       
-      // Try multiple paths to find the image
+
       const message = data.choices?.[0]?.message;
       const content = message?.content;
       const contentParts = Array.isArray(content)
@@ -82,8 +82,6 @@ serve(async (req) => {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     } else if (mode === "video") {
-      // For video, we use text-based AI to explain that video gen is in preview
-      // and generate a placeholder response
       const response = await fetch(
         "https://ai.gateway.lovable.dev/v1/chat/completions",
         {
