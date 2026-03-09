@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+
+    --background: 225 20% 6%;
+    --foreground: 210 20% 96%;
+
+    --card: 225 18% 9%;
+    --card-foreground: 210 20% 96%;
+
+    --popover: 225 18% 9%;
+    --popover-foreground: 210 20% 96%;
+
+    --primary: 210 22% 96%;
+    --primary-foreground: 225 20% 6%;
+
+    --secondary: 225 14% 14%;
+    --secondary-foreground: 210 18% 92%;
+
+    --muted: 225 14% 12%;
+    --muted-foreground: 215 10% 62%;
+
+    --accent: 225 14% 16%;
+    --accent-foreground: 210 20% 96%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 225 12% 18%;
+    --input: 225 12% 18%;
+    --ring: 210 18% 86%;
+
+    --radius: 0.9rem;
+
+    --neon-glow: 210 22% 96%;
+    --neon-purple: 215 10% 70%;
+    --surface-glass: 225 18% 10%;
+
+    --sidebar-background: 225 18% 7%;
+    --sidebar-foreground: 210 18% 90%;
+    --sidebar-primary: 210 22% 96%;
+    --sidebar-primary-foreground: 225 20% 6%;
+    --sidebar-accent: 225 14% 14%;
+    --sidebar-accent-foreground: 210 18% 92%;
+    --sidebar-border: 225 12% 18%;
+    --sidebar-ring: 210 18% 86%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    background-image: radial-gradient(1000px circle at 20% -10%, hsl(var(--foreground) / 0.06), transparent 40%),
+      radial-gradient(900px circle at 85% 0%, hsl(var(--foreground) / 0.04), transparent 45%);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-card/60 backdrop-blur-xl border border-border/50 rounded-xl;
+    box-shadow: 0 1px 0 hsl(var(--foreground) / 0.04), 0 20px 50px -35px rgba(0, 0, 0, 0.8);
+  }
+
+  .neon-border {
+    @apply border border-border/70;
+    box-shadow: 0 0 0 1px hsl(var(--border) / 0.35), inset 0 1px 0 hsl(var(--foreground) / 0.04);
+  }
+
+  .neon-glow {
+    text-shadow: 0 0 18px hsl(var(--foreground) / 0.16);
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--foreground)), hsl(var(--muted-foreground)));
+  }
+
+  .btn-generate {
+    @apply relative overflow-hidden font-display font-semibold tracking-wide;
+    background: linear-gradient(180deg, hsl(var(--foreground) / 0.98), hsl(var(--foreground) / 0.86));
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  }
+
+  .btn-generate:hover {
+    box-shadow: 0 12px 30px -18px rgba(0, 0, 0, 0.85), 0 0 0 1px hsl(var(--foreground) / 0.12);
+    transform: translateY(-1px);
+  }
+
+  .tab-active {
+    @apply border-b-2 border-primary text-primary;
+  }
+
+  .tab-inactive {
+    @apply border-b-2 border-transparent text-muted-foreground hover:text-foreground transition-colors;
+  }
+
+  .prompt-input {
+    @apply bg-muted/50 backdrop-blur-sm border border-border/50 text-foreground placeholder:text-muted-foreground focus:border-primary/50 focus:ring-1 focus:ring-primary/30 transition-all;
+  }
+
+  .result-card {
+    @apply glass-panel overflow-hidden cursor-pointer transition-all duration-300;
+  }
+
+  .result-card:hover {
+    @apply border-foreground/15;
+    box-shadow: 0 24px 60px -45px rgba(0, 0, 0, 0.9), 0 0 0 1px hsl(var(--foreground) / 0.08);
+    transform: translateY(-2px);
+  }
+}
+
+@layer utilities {
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}

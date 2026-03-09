@@ -1,0 +1,7 @@
+project_id = "vecicpdfvwvokmwtutil"
+
+[functions.generate]
+verify_jwt = false
+
+[functions.kling-video]
+verify_jwt = false
