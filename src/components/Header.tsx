@@ -31,8 +31,8 @@ const Header = () => {
         <div className="container flex h-16 items-center justify-between px-4 md:px-6">
           <div className="flex items-center gap-3">
             <Link to="/" className="flex items-center gap-3">
-              <img src={logo} alt="KineticAI" className="h-8 w-8 rounded-md" />
-              <span className="font-display text-lg font-bold tracking-tight gradient-text md:text-xl">
+              <img src={logo} alt="KineticAI" className="h-12 w-12 rounded-lg" />
+              <span className="font-display text-xl font-bold tracking-tight gradient-text md:text-2xl">
                 KineticAI
               </span>
             </Link>
